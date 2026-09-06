@@ -1,1 +1,1108 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>স্টেডফাস্ট কুরিয়ার — হাব / ব্রাঞ্চ অডিট চেকলিস্ট</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #e9eef3;
+      color: #172333;
+      font-family: "Noto Sans Bengali", Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1050px;
+      margin: 0 auto;
+      background: white;
+      padding: 28px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+    }
+
+    .header {
+      text-align: center;
+      border-bottom: 3px solid #183c5d;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+
+    .company {
+      font-size: 25px;
+      font-weight: 800;
+      color: #173d5d;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: 2px;
+      color: #1b3044;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      color: #66717c;
+      margin-top: 2px;
+    }
+
+    .notice {
+      background: #eef4f8;
+      border: 1px solid #cbd8e2;
+      border-radius: 6px;
+      padding: 11px 14px;
+      margin-bottom: 12px;
+      font-size: 12px;
+    }
+
+    .notice strong {
+      color: #b21f2d;
+    }
+
+    .box {
+      border: 1px solid #cbd4dc;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      background: #173d5d;
+      color: white;
+      padding: 7px 11px;
+      margin: -12px -12px 10px;
+      border-radius: 5px 5px 0 0;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .section-title span {
+      background: #e24a4a;
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-size: 10px;
+      margin-left: 6px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px 18px;
+    }
+
+    .field {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+    }
+
+    .field label {
+      min-width: 145px;
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    input,
+    textarea,
+    select {
+      font-family: inherit;
+      font-size: 12px;
+      border: 1px solid #aebac6;
+      border-radius: 4px;
+      padding: 6px 8px;
+      outline: none;
+      background: white;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #173d5d;
+      box-shadow: 0 0 0 2px rgba(23,61,93,0.08);
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      flex: 1;
+      width: 100%;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 58px;
+    }
+
+    .preaudit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 18px;
+    }
+
+    .preaudit-item {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .preaudit-item strong {
+      font-weight: 700;
+    }
+
+    .checklist-table,
+    .call-table,
+    .summary-table,
+    .signature-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .checklist-table th,
+    .checklist-table td,
+    .call-table th,
+    .call-table td,
+    .summary-table td,
+    .signature-table th,
+    .signature-table td {
+      border: 1px solid #b8c5cf;
+      padding: 6px 7px;
+      vertical-align: middle;
+      font-size: 11px;
+    }
+
+    .checklist-table th,
+    .call-table th,
+    .signature-table th {
+      background: #173d5d;
+      color: white;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .checklist-table .num {
+      width: 42px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .checklist-table .answer {
+      width: 135px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .checklist-table .extra {
+      width: 205px;
+    }
+
+    .risk {
+      color: #b41d2b;
+      font-weight: 800;
+      margin-right: 3px;
+    }
+
+    .option {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      margin-right: 8px;
+      white-space: nowrap;
+    }
+
+    .option input {
+      width: auto;
+      margin: 0;
+      accent-color: #173d5d;
+    }
+
+    .mini-input {
+      width: 90px !important;
+      display: inline-block;
+      margin-left: 4px;
+    }
+
+    .call-table .no {
+      width: 45px;
+      text-align: center;
+    }
+
+    .call-table .called {
+      width: 160px;
+      text-align: center;
+    }
+
+    .problem-block {
+      border: 1px solid #c8d2db;
+      border-radius: 5px;
+      margin-bottom: 9px;
+      overflow: hidden;
+    }
+
+    .problem-head {
+      background: #f0f4f7;
+      padding: 7px 9px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .problem-body {
+      padding: 9px;
+    }
+
+    .problem-row {
+      display: grid;
+      grid-template-columns: 125px 1fr;
+      gap: 8px;
+      margin-bottom: 7px;
+      align-items: start;
+    }
+
+    .problem-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .problem-row label {
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .urgent ol {
+      margin: 5px 0 0 24px;
+      padding: 0;
+    }
+
+    .urgent li {
+      margin: 4px 0;
+      padding-left: 2px;
+    }
+
+    .urgent input {
+      width: 90%;
+    }
+
+    .summary-table td:first-child {
+      width: 280px;
+      font-weight: 700;
+      background: #f3f6f8;
+    }
+
+    .signature-table th {
+      background: #e8eef3;
+      color: #173d5d;
+    }
+
+    .signature-table td {
+      height: 48px;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding-top: 18px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-print {
+      background: #173d5d;
+      color: white;
+    }
+
+    .btn-reset {
+      background: #e9edf1;
+      color: #263746;
+      border: 1px solid #bcc7d0;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #73808b;
+      font-size: 10px;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 800px) {
+      body {
+        padding: 8px;
+      }
+
+      .page {
+        padding: 14px;
+      }
+
+      .grid-2,
+      .preaudit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field {
+        display: block;
+      }
+
+      .field label {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .preaudit-item {
+        grid-template-columns: 1fr;
+      }
+
+      .checklist-table {
+        display: block;
+        overflow-x: auto;
+      }
+
+      .company {
+        font-size: 20px;
+      }
+
+      .title {
+        font-size: 16px;
+      }
+
+      .problem-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 7mm;
+      }
+
+      body {
+        background: white;
+        padding: 0;
+        color: #000;
+      }
+
+      .page {
+        max-width: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+
+      .actions {
+        display: none !important;
+      }
+
+      input,
+      textarea,
+      select {
+        color: #000;
+        border: 1px solid #777;
+      }
+
+      .box,
+      .problem-block {
+        break-inside: avoid;
+      }
+
+      tr {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="company">স্টেডফাস্ট কুরিয়ার লিমিটেড</div>
+    <div class="title">হাব / ব্রাঞ্চ অডিট চেকলিস্ট</div>
+    <div class="subtitle">
+      মনিটরিং ডিপার্টমেন্ট · মাস্টার কপি (সংস্করণ ২.০ — সংক্ষিপ্ত সংস্করণ)
+    </div>
+  </div>
+
+  <!-- NOTICE -->
+  <div class="notice">
+    <strong>ব্যবহারের নিয়ম:</strong>
+    প্রতিটি প্রশ্নে হ্যাঁ অথবা না নির্বাচন করুন (✓)। যেখানে সংখ্যা চাওয়া হয়েছে সেখানে সংখ্যা লিখুন।
+    পুরো ফর্মে “হ্যাঁ” = ঠিক আছে, “না” = সমস্যা পাওয়া গেছে।
+    যেকোনো “না”-এর বিস্তারিত বিবরণ ও প্রমাণ নিচের “পাওয়া সমস্যাসমূহ” অংশে পয়েন্ট নম্বর উল্লেখ করে লিখুন।
+    ঝুঁকিপূর্ণ চিহ্ন থাকা প্রশ্নগুলোতে সবচেয়ে বেশি মনোযোগ দিন।
+  </div>
+
+  <!-- AUDIT INFORMATION -->
+  <div class="box">
+    <div class="section-title">অডিট তথ্য</div>
+
+    <div class="grid-2">
+
+      <div class="field">
+        <label>হাবের নাম:</label>
+        <input type="text" name="hubName">
+      </div>
+
+      <div class="field">
+        <label>বিভাগ / জোন:</label>
+        <input type="text" name="zone">
+      </div>
+
+      <div class="field">
+        <label>অডিটরের নাম:</label>
+        <input type="text" name="auditor">
+      </div>
+
+      <div class="field">
+        <label>অডিট তারিখ:</label>
+        <input type="date" name="auditDate">
+      </div>
+
+      <div class="field">
+        <label>হাব ম্যানেজারের নাম:</label>
+        <input type="text" name="manager">
+      </div>
+
+      <div class="field">
+        <label>অডিট সময়:</label>
+        <input type="time" name="startTime">
+        <span>থেকে</span>
+        <input type="time" name="endTime">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRE AUDIT -->
+  <div class="box">
+    <div class="section-title">
+      প্রি-অডিট তথ্য
+      <span>হাবে যাওয়ার আগে সংগ্রহ করুন</span>
+    </div>
+
+    <div class="preaudit-grid">
+
+      <div class="preaudit-item">
+        <strong>গত ৭ দিনের ডেলিভারি সাকসেস রেট:</strong>
+        <input type="text" placeholder="%">
+      </div>
+
+      <div class="preaudit-item">
+        <strong>বর্তমান পেন্ডিং পার্সেল (সিস্টেম):</strong>
+        <input type="number">
+      </div>
+
+      <div class="preaudit-item">
+        <strong>সর্বোচ্চ রিটার্ন-রেটধারী রাইডার:</strong>
+        <input type="text" placeholder="নাম / আইডি">
+      </div>
+
+      <div class="preaudit-item">
+        <strong>সিস্টেমে সক্রিয় স্টাফ / রাইডার সংখ্যা:</strong>
+        <input type="text" placeholder="স্টাফ / রাইডার">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MAIN CHECKLIST -->
+  <div class="box">
+    <div class="section-title">
+      মূল চেকলিস্ট
+      <span>১০টি মূল পয়েন্ট</span>
+    </div>
+
+    <table class="checklist-table">
+      <thead>
+        <tr>
+          <th class="num">নং</th>
+          <th>অডিট পয়েন্ট</th>
+          <th class="answer">হ্যাঁ / না</th>
+          <th class="extra">সংখ্যা / তথ্য</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td class="num">1</td>
+          <td>
+            <span class="risk">ঝুঁকিপূর্ণ</span>
+            এন্ট্রিতে সারপ্রাইজ চেক করা ক্যাশ (৳), স্টাফ সংখ্যা ও রাইডার সংখ্যা —
+            সব সিস্টেম/খাতার সাথে মিলেছে।
+          </td>
+
+          <td class="answer">
+            <label class="option">
+              <input type="radio" name="q1" value="yes"> হ্যাঁ
+            </label>
+            <label class="option">
+              <input type="radio" name="q1" value="no"> না
+            </label>
+          </td>
+
+          <td class="extra">
+            বাস্তব ক্যাশ:
+            <input class="mini-input" type="number">
+
+            সিস্টেম ক্যাশ:
+            <input class="mini-input" type="number">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="num">2</td>
+          <td>
+            <span class="risk">ঝুঁকিপূর্ণ</span>
+            স্যালারি শিট সঠিক (ভুয়া/অনুপস্থিত কর্মীর নামে বেতন নয়) এবং কোনো
+            রাইডারের কাছে রোলিং (দেরিতে ক্যাশ জমা) পাওয়া যায়নি।
+          </td>
+
+          <td class="answer">
+            <label class="option">
+              <input type="radio" name="q2" value="yes"> হ্যাঁ
+            </label>
+            <label class="option">
+              <input type="radio" name="q2" value="no"> না
+            </label>
+          </td>
+
+          <td class="extra">
+            না থাকলে সংখ্যা:
+            <input class="mini-input" type="number">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="num">3</td>
+          <td>
+            ট্রান্সপোর্ট, বাসাভাড়া, ওয়াইফাই ও অন্যান্য বিল সঠিক এবং
+            কাগজপত্রসহ সংরক্ষিত।
+          </td>
+
+          <td class="answer">
+            <label class="option">
+              <input type="radio" name="q3" value="yes"> হ্যাঁ
+            </label>
+            <label class="option">
+              <input type="radio" name="q3" value="no"> না
+            </label>
+          </td>
+
+          <td class="extra"></td>
+        </tr>
+
+        <tr>
+          <td class="num">4</td>
+          <td>
+            পার্সেল সর্টিং, বণ্টন (পক্ষপাতিত্ব নয়), পিক-আপ ও ড্যামেজ হ্যান্ডলিং —
+            সব নিয়ম মেনে হচ্ছে।
+          </td>
+
+          <td class="answer">
+            <label class="option">
+              <input type="radio" name="q4" value="yes"> হ্যাঁ
+            </label>
+            <label class="option">
+              <input type="radio" name="q4" value="no"> না
+            </label>
+          </td>
+
+          <td class="extra"></td>
+        </tr>
+
+        <tr>
+          <td class="num">5</td>
+          <td>
+            <span class="risk">ঝুঁকিপূর্ণ</span>
+            রিসিভড-অ্যাসাইনড মিলেছে (মিসিং পার্সেল নয়), RTN সময়মতো প্রসেস হচ্ছে
+            এবং হাই-ভ্যালু পার্সেল সুরক্ষিত।
+          </td>
+
+          <td class="answer">
+            <label class="option">
+              <input type="radio" name="q5" value="yes"> হ্যাঁ
+            </label>
+            <label class="option">
+              <input type="radio" name="q5" value="no"> না
+            </label>
+          </td>
+
+          <td class="extra">
+            মিসিং সংখ্যা:
+            <input class="mini-input" type="number">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="num">6</td>
+          <td>
+            <span class="risk">ঝুঁকিপূর্ণ</span>
+            কাস্টমার কল ভেরিফিকেশনে কোনো ফেক কল পাওয়া যায়নি
+            (নিচের টেবিল দেখুন)।
+          </td>
+
+          <td class="answer">
+            <label class="option">
+              <input type="radio" name="q6" value="yes"> হ্যাঁ
+            </label>
+            <label class="option">
+              <input type="radio" name="q6" value="no"> না
+            </label>
+          </td>
+
+          <td class="extra">
+            ফেক কল সংখ্যা:
+            <input class="mini-input" type="number">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="num">7</td>
+          <td>
+            রাইডার নিয়ম মেনে চলছেন, প্যানেল পাসওয়ার্ড শেয়ার হচ্ছে না এবং
+            কোনো গোপন অভিযোগ পাওয়া যায়নি।
+          </td>
+
+          <td class="answer">
+            <label class="option">
+              <input type="radio" name="q7" value="yes"> হ্যাঁ
+            </label>
+            <label class="option">
+              <input type="radio" name="q7" value="no"> না
+            </label>
+          </td>
+
+          <td class="extra"></td>
+        </tr>
+
+        <tr>
+          <td class="num">8</td>
+          <td>
+            ম্যানেজার নিয়মিত মনিটর করেন এবং বর্তমান জনবল কাজের চাপের তুলনায়
+            পর্যাপ্ত।
+          </td>
+
+          <td class="answer">
+            <label class="option">
+              <input type="radio" name="q8" value="yes"> হ্যাঁ
+            </label>
+            <label class="option">
+              <input type="radio" name="q8" value="no"> না
+            </label>
+          </td>
+
+          <td class="extra"></td>
+        </tr>
+
+        <tr>
+          <td class="num">9</td>
+          <td>
+            গাড়ি/ভান, যন্ত্রপাতি (CCTV/স্ক্যানার/ইন্টারনেট/প্রিন্টার) ও পরিবেশ
+            পরিষ্কার-পরিচ্ছন্ন — সবকিছু ঠিক আছে।
+          </td>
+
+          <td class="answer">
+            <label class="option">
+              <input type="radio" name="q9" value="yes"> হ্যাঁ
+            </label>
+            <label class="option">
+              <input type="radio" name="q9" value="no"> না
+            </label>
+          </td>
+
+          <td class="extra"></td>
+        </tr>
+
+        <tr>
+          <td class="num">10</td>
+          <td>
+            আশেপাশের মার্চেন্টরা সার্ভিসে সন্তুষ্ট
+            (প্রতিযোগীর কাছে চলে যাওয়ার আশঙ্কা নেই)।
+          </td>
+
+          <td class="answer">
+            <label class="option">
+              <input type="radio" name="q10" value="yes"> হ্যাঁ
+            </label>
+            <label class="option">
+              <input type="radio" name="q10" value="no"> না
+            </label>
+          </td>
+
+          <td class="extra"></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CUSTOMER CALL VERIFICATION -->
+  <div class="box">
+    <div class="section-title">
+      কাস্টমার কল ভেরিফিকেশন লগ
+      <span>সবচেয়ে শক্তিশালী প্রমাণ</span>
+    </div>
+
+    <div style="font-size:11px; margin-bottom:8px;">
+      ৫–১০টি পেন্ডিং/রিটার্ন পার্সেলে সরাসরি কাস্টমারকে কল দিন।
+      জিজ্ঞেস করুন — “আমাদের রাইডার কি পার্সেলের জন্য আপনাকে কল করেছিল?”
+      কাস্টমার “না” বললে উপরের পয়েন্ট ৬-এ “না” দিন।
+    </div>
+
+    <table class="call-table">
+      <thead>
+        <tr>
+          <th class="no">নং</th>
+          <th>পার্সেল / ট্র্যাকিং নং</th>
+          <th class="called">রাইডার কল করেছিল?</th>
+          <th>মন্তব্য</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td class="no">1</td>
+          <td><input type="text" style="width:100%;"></td>
+          <td class="called">
+            <label class="option">
+              <input type="radio" name="call1" value="yes"> হ্যাঁ
+            </label>
+            <label class="option">
+              <input type="radio" name="call1" value="no"> না
+            </label>
+          </td>
+          <td><input type="text" style="width:100%;"></td>
+        </tr>
+
+        <tr>
+          <td class="no">2</td>
+          <td><input type="text" style="width:100%;"></td>
+          <td class="called">
+            <label class="option">
+              <input type="radio" name="call2" value="yes"> হ্যাঁ
+            </label>
+            <label class="option">
+              <input type="radio" name="call2" value="no"> না
+            </label>
+          </td>
+          <td><input type="text" style="width:100%;"></td>
+        </tr>
+
+        <tr>
+          <td class="no">3</td>
+          <td><input type="text" style="width:100%;"></td>
+          <td class="called">
+            <label class="option">
+              <input type="radio" name="call3" value="yes"> হ্যাঁ
+            </label>
+            <label class="option">
+              <input type="radio" name="call3" value="no"> না
+            </label>
+          </td>
+          <td><input type="text" style="width:100%;"></td>
+        </tr>
+
+        <tr>
+          <td class="no">4</td>
+          <td><input type="text" style="width:100%;"></td>
+          <td class="called">
+            <label class="option">
+              <input type="radio" name="call4" value="yes"> হ্যাঁ
+            </label>
+            <label class="option">
+              <input type="radio" name="call4" value="no"> না
+            </label>
+          </td>
+          <td><input type="text" style="width:100%;"></td>
+        </tr>
+
+        <tr>
+          <td class="no">5</td>
+          <td><input type="text" style="width:100%;"></td>
+          <td class="called">
+            <label class="option">
+              <input type="radio" name="call5" value="yes"> হ্যাঁ
+            </label>
+            <label class="option">
+              <input type="radio" name="call5" value="no"> না
+            </label>
+          </td>
+          <td><input type="text" style="width:100%;"></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PROBLEMS -->
+  <div class="box">
+    <div class="section-title">পাওয়া সমস্যাসমূহ (বিস্তারিত বিবরণ)</div>
+
+    <div style="font-size:11px; margin-bottom:9px;">
+      উপরে যেসব পয়েন্টে “না” চিহ্নিত হয়েছে শুধু সেগুলোর বিস্তারিত বিবরণ ও
+      প্রমাণ এখানে লিখুন। ছবি/স্ক্রিনশট/কল রেকর্ড আলাদাভাবে জমা দিন।
+    </div>
+
+    <!-- Problem 1 -->
+    <div class="problem-block">
+      <div class="problem-head">সমস্যা ১</div>
+      <div class="problem-body">
+
+        <div class="problem-row">
+          <label>পয়েন্ট নং:</label>
+          <input type="text">
+        </div>
+
+        <div class="problem-row">
+          <label>বিবরণ:</label>
+          <textarea></textarea>
+        </div>
+
+        <div class="problem-row">
+          <label>প্রমাণের ধরন / রেফারেন্স:</label>
+          <input type="text" placeholder="ছবি নং / স্ক্রিনশট / কল রেকর্ড">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Problem 2 -->
+    <div class="problem-block">
+      <div class="problem-head">সমস্যা ২</div>
+      <div class="problem-body">
+
+        <div class="problem-row">
+          <label>পয়েন্ট নং:</label>
+          <input type="text">
+        </div>
+
+        <div class="problem-row">
+          <label>বিবরণ:</label>
+          <textarea></textarea>
+        </div>
+
+        <div class="problem-row">
+          <label>প্রমাণের ধরন / রেফারেন্স:</label>
+          <input type="text" placeholder="ছবি নং / স্ক্রিনশট / কল রেকর্ড">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Problem 3 -->
+    <div class="problem-block">
+      <div class="problem-head">সমস্যা ৩</div>
+      <div class="problem-body">
+
+        <div class="problem-row">
+          <label>পয়েন্ট নং:</label>
+          <input type="text">
+        </div>
+
+        <div class="problem-row">
+          <label>বিবরণ:</label>
+          <textarea></textarea>
+        </div>
+
+        <div class="problem-row">
+          <label>প্রমাণের ধরন / রেফারেন্স:</label>
+          <input type="text" placeholder="ছবি নং / স্ক্রিনশট / কল রেকর্ড">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Problem 4 -->
+    <div class="problem-block">
+      <div class="problem-head">সমস্যা ৪</div>
+      <div class="problem-body">
+
+        <div class="problem-row">
+          <label>পয়েন্ট নং:</label>
+          <input type="text">
+        </div>
+
+        <div class="problem-row">
+          <label>বিবরণ:</label>
+          <textarea></textarea>
+        </div>
+
+        <div class="problem-row">
+          <label>প্রমাণের ধরন / রেফারেন্স:</label>
+          <input type="text" placeholder="ছবি নং / স্ক্রিনশট / কল রেকর্ড">
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- URGENT -->
+  <div class="box urgent">
+    <div class="section-title">তাৎক্ষণিক ব্যবস্থা প্রয়োজন — জরুরি</div>
+
+    <div style="font-size:11px;">
+      যা আজই সমাধান দরকার — হাব ছাড়ার আগে ম্যানেজারকে মৌখিকভাবে জানিয়ে দিন।
+    </div>
+
+    <ol>
+      <li><input type="text"></li>
+      <li><input type="text"></li>
+      <li><input type="text"></li>
+    </ol>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="box">
+    <div class="section-title">অডিট সারাংশ</div>
+
+    <table class="summary-table">
+      <tr>
+        <td>মোট সমস্যা পাওয়া গেছে:</td>
+        <td><input type="number" style="width:150px;"></td>
+      </tr>
+
+      <tr>
+        <td>মোট “না”, ১০-এর মধ্যে:</td>
+        <td><input type="number" min="0" max="10" style="width:150px;"></td>
+      </tr>
+
+      <tr>
+        <td>ঝুঁকিপূর্ণ পয়েন্ট ১, ২, ৫, ৬ — মোট:</td>
+        <td><input type="number" style="width:150px;"></td>
+      </tr>
+
+      <tr>
+        <td>হাবের সার্বিক অবস্থা:</td>
+        <td>
+          <label class="option">
+            <input type="radio" name="overall" value="excellent"> চমৎকার
+          </label>
+
+          <label class="option">
+            <input type="radio" name="overall" value="good"> ভালো
+          </label>
+
+          <label class="option">
+            <input type="radio" name="overall" value="average"> মোটামুটি
+          </label>
+
+          <label class="option">
+            <input type="radio" name="overall" value="bad"> খারাপ
+          </label>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- SIGNATURE -->
+  <div class="box">
+    <div class="section-title">নাম / স্বাক্ষর / তারিখ</div>
+
+    <table class="signature-table">
+      <thead>
+        <tr>
+          <th>ব্যক্তি</th>
+          <th>নাম</th>
+          <th>স্বাক্ষর</th>
+          <th>তারিখ</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td>অডিটর</td>
+          <td><input type="text" style="width:100%;"></td>
+          <td><input type="text" style="width:100%;"></td>
+          <td><input type="date" style="width:100%;"></td>
+        </tr>
+
+        <tr>
+          <td>হাব ম্যানেজার</td>
+          <td><input type="text" style="width:100%;"></td>
+          <td><input type="text" style="width:100%;"></td>
+          <td><input type="date" style="width:100%;"></td>
+        </tr>
+
+        <tr>
+          <td>পূর্বোক্ত / রিভিউ করেছেন</td>
+          <td><input type="text" style="width:100%;"></td>
+          <td><input type="text" style="width:100%;"></td>
+          <td><input type="date" style="width:100%;"></td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <div style="font-size:11px; margin-top:10px;">
+      <strong>হাব ম্যানেজারের নিশ্চয়তা:</strong>
+      আমি হাব ম্যানেজার হিসেবে নিশ্চিত করছি যে উপরে উল্লেখিত পর্যবেক্ষণ ও
+      সমস্যাগুলো আমাকে জানানো হয়েছে এবং তথ্যগুলো সঠিক।
+    </div>
+
+  </div>
+
+  <!-- BUTTONS -->
+  <div class="actions">
+    <button class="btn btn-print" onclick="window.print()">
+      📄 PDF তৈরি / Print
+    </button>
+
+    <button class="btn btn-reset" onclick="resetForm()">
+      ↺ সব তথ্য মুছুন
+    </button>
+  </div>
+
+  <div class="footer-note">
+    Steadfast Courier Limited · Hub / Branch Audit Checklist
+  </div>
+
+</div>
+
+<script>
+  function resetForm() {
+    const confirmed = confirm(
+      "আপনি কি নিশ্চিতভাবে ফর্মের সব তথ্য মুছে ফেলতে চান?"
+    );
+
+    if (confirmed) {
+      document.querySelectorAll("input, textarea, select").forEach(function(el) {
+        if (el.type === "radio" || el.type === "checkbox") {
+          el.checked = false;
+        } else {
+          el.value = "";
+        }
+      });
+    }
+  }
+</script>
+
+</body>
+</html>
